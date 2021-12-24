@@ -1,0 +1,5 @@
+name: screenshare
+author: Cassio Martim
+version: 1.0.0
+description: Simple screenshare plugin for your Minecraft Server.
+main: com.github.cassioamartim.Screenshare

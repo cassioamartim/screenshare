@@ -1,0 +1,10 @@
+# Configurações
+world: 'world' # Fundamental que você coloque o nome dos dois mundos, caso não, o plugin não irá funcionar!
+ss_world: 'world'
+
+disconnected-message: '&cVocê se desconectou em screnshare!'
+disconnect-ban: true
+ban-command: '/ban {player} disconnected!' # {player} retorna o nome do jogador.
+
+command-screenshare: '&cVocê não pode usar comandos em screenshare!'
+
