@@ -47,6 +47,7 @@ public class ScreenshareCommand extends Command {
 
         val gamer = Gamer.get(target.getName());
 
+        // Adicionar condições ternárias por aqui:
         if (gamer.isInScreenshare()) {
             gamer.setInScreenshare(false);
             Gamer.update(gamer);
