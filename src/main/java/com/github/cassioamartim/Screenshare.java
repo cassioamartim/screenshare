@@ -11,16 +11,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Screenshare extends JavaPlugin {
 
     @Getter
-    private static final FileConfiguration config = getConfig();
+    private static FileConfiguration cfg;
 
     @Getter
-    private static final World world = Bukkit.getWorld(config.getString("world"));
+    private static World world;
     @Getter
-    private static final World ss_world = Bukkit.getWorld(config.getString("ss_world"));
+    private static World ss_world;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
+        cfg = getConfig();
+        world = Bukkit.getWorld(cfg.getString("world"));
+        ss_world = Bukkit.getWorld(cfg.getString("ss_world"));
 
         if (world == null || ss_world == null) {
             getServer().getConsoleSender().sendMessage("Mundo normal/ou de screenshare não encontrado, configure-o em config.yml");

@@ -47,27 +47,14 @@ public class ScreenshareCommand extends Command {
 
         val gamer = Gamer.get(target.getName());
 
-        // Adicionar condições ternárias por aqui:
-        if (gamer.isInScreenshare()) {
-            gamer.setInScreenshare(false);
-            Gamer.update(gamer);
+        gamer.setInScreenshare(!gamer.isInScreenshare());
+        Gamer.update(gamer);
 
-            player.teleport(Screenshare.getWorld().getSpawnLocation());
-            target.teleport(player.getLocation());
+        player.teleport(gamer.isInScreenshare() ? Screenshare.getSs_world().getSpawnLocation() : Screenshare.getWorld().getSpawnLocation());
+        target.teleport(player.getLocation());
 
-            player.sendMessage("§cVocê removeu o jogador §e" + target.getName() + "§c da screenshare.");
-            target.sendMessage("§cVocê foi removido da screenshare!");
-        } else {
-            gamer.setInScreenshare(true);
-            Gamer.update(gamer);
-
-            target.teleport(Screenshare.getSs_world().getSpawnLocation());
-            player.teleport(target.getLocation());
-
-            player.sendMessage("§aVocê adicionou o jogador §e" + target.getName() + "§a na screenshare.");
-            target.sendMessage("§eVocê foi adicionado na screenshare!");
-        }
-
+        player.sendMessage(gamer.isInScreenshare() ? "§aAdicionado na screenshare §e" + target.getName() : "§cRemovido da screenshare §e" + target.getName());
+        target.sendMessage(gamer.isInScreenshare() ? "§cAdicionado na screenshare por §e" + player.getName() : "§aRemovido da screenshare por §e" + player.getName());
         return false;
     }
 }

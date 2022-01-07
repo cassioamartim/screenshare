@@ -31,10 +31,10 @@ public final class GamerListener implements Listener {
         if (gamer.isInScreenshare()) {
             Gamer.remove(event.getPlayer().getName());
             Bukkit.getOnlinePlayers().forEach(player ->
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', Screenshare.getConfig().getString("disconnected-message"))));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', Screenshare.getCfg().getString("disconnected-message"))));
 
-            if (Screenshare.getConfig().getBoolean("disconnect-ban"))
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Screenshare.getConfig().getString("ban-command").replace("/", "").replace("{player}", event.getPlayer().getName()));
+            if (Screenshare.getCfg().getBoolean("disconnect-ban"))
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Screenshare.getCfg().getString("ban-command").replace("/", "").replace("{player}", event.getPlayer().getName()));
         }
     }
 
@@ -45,7 +45,7 @@ public final class GamerListener implements Listener {
 
         if (gamer.isInScreenshare() && event.getMessage().toLowerCase().startsWith("/")) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', Screenshare.getConfig().getString("command-screenshare")));
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', Screenshare.getCfg().getString("command-screenshare")));
         }
     }
 }
